@@ -1,0 +1,186 @@
+{
+  "dataset_1": {
+    "name": "Indian Road Accident Dataset (2022\u20132025)",
+    "source": "Kaggle (sehaj1104/indian-road-accident-dataset-20222025)",
+    "total_records": 20000,
+    "total_features": 24,
+    "cities_covered": [
+      "Bangalore",
+      "Chandigarh",
+      "Chennai",
+      "Delhi",
+      "Hyderabad",
+      "Kolkata",
+      "Mumbai",
+      "Pune"
+    ],
+    "regressor_metrics": {
+      "model_type": "Random Forest Regressor (100 Trees)",
+      "r2_score": 0.8805,
+      "mae": 0.0557,
+      "rmse": 0.0758,
+      "variance_explained_pct": 88.05
+    },
+    "classifier_metrics": {
+      "model_type": "Random Forest Classifier (Balanced)",
+      "accuracy": 0.4755,
+      "classes": [
+        "minor",
+        "major",
+        "fatal"
+      ],
+      "precision": {
+        "minor": 0.5459,
+        "major": 0.2902,
+        "fatal": 0.1111
+      },
+      "recall": {
+        "minor": 0.7519,
+        "major": 0.1853,
+        "fatal": 0.0369
+      },
+      "f1_score": {
+        "minor": 0.6326,
+        "major": 0.2262,
+        "fatal": 0.0553
+      },
+      "confusion_matrix": {
+        "labels": [
+          "minor",
+          "major",
+          "fatal"
+        ],
+        "matrix": [
+          [
+            1658,
+            424,
+            123
+          ],
+          [
+            923,
+            222,
+            53
+          ],
+          [
+            456,
+            119,
+            22
+          ]
+        ]
+      }
+    },
+    "feature_importances": [
+      {
+        "feature": "visibility_low",
+        "importance": 49.6
+      },
+      {
+        "feature": "traffic_density_high",
+        "importance": 28.63
+      },
+      {
+        "feature": "is_peak_hour",
+        "importance": 8.14
+      },
+      {
+        "feature": "weather_rain",
+        "importance": 2.75
+      },
+      {
+        "feature": "visibility_medium",
+        "importance": 2.61
+      },
+      {
+        "feature": "temperature",
+        "importance": 2.02
+      },
+      {
+        "feature": "hour",
+        "importance": 1.55
+      },
+      {
+        "feature": "lanes",
+        "importance": 1.06
+      },
+      {
+        "feature": "traffic_signal",
+        "importance": 0.35
+      },
+      {
+        "feature": "is_weekend",
+        "importance": 0.33
+      },
+      {
+        "feature": "road_type_rural",
+        "importance": 0.25
+      },
+      {
+        "feature": "road_type_urban",
+        "importance": 0.25
+      },
+      {
+        "feature": "road_type_highway",
+        "importance": 0.23
+      },
+      {
+        "feature": "city_Bangalore",
+        "importance": 0.22
+      },
+      {
+        "feature": "city_Chennai",
+        "importance": 0.22
+      }
+    ]
+  },
+  "dataset_2": {
+    "name": "Road Accident Severity in India",
+    "source": "Kaggle (s3programmer/road-accident-severity-in-india)",
+    "total_records": 12316,
+    "total_features": 32,
+    "accuracy": 0.7801,
+    "classes": [
+      "Fatal injury",
+      "Serious Injury",
+      "Slight Injury"
+    ],
+    "confusion_matrix": {
+      "labels": [
+        "Fatal injury",
+        "Serious Injury",
+        "Slight Injury"
+      ],
+      "matrix": [
+        [
+          11,
+          5,
+          10
+        ],
+        [
+          4,
+          100,
+          195
+        ],
+        [
+          32,
+          218,
+          1535
+        ]
+      ]
+    },
+    "precision": {
+      "Fatal injury": 0.234,
+      "Serious Injury": 0.3096,
+      "Slight Injury": 0.8822
+    },
+    "recall": {
+      "Fatal injury": 0.4231,
+      "Serious Injury": 0.3344,
+      "Slight Injury": 0.8599
+    },
+    "f1_score": {
+      "Fatal injury": 0.3014,
+      "Serious Injury": 0.3215,
+      "Slight Injury": 0.8709
+    }
+  }
+}

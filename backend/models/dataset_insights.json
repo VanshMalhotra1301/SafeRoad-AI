@@ -1,0 +1,511 @@
+{
+  "summary": {
+    "total_incidents_analyzed": 32316,
+    "primary_dataset_records": 20000,
+    "supporting_dataset_records": 12316,
+    "cities_count": 8,
+    "overall_avg_risk_score": 43.8,
+    "peak_hour_risk_jump_pct": 57.7,
+    "fog_risk_multiplier": 2.49,
+    "low_visibility_risk_multiplier": 2.49
+  },
+  "cities": [
+    {
+      "city": "Chandigarh",
+      "state": "Punjab/Haryana",
+      "lat": 30.7333,
+      "lng": 76.7794,
+      "total_accidents": 2577,
+      "avg_risk_score": 44.2,
+      "fatal_accidents": 378,
+      "fatal_rate": 14.7,
+      "major_accidents": 780,
+      "minor_accidents": 1419,
+      "top_cause": "poor road"
+    },
+    {
+      "city": "Chennai",
+      "state": "Tamil Nadu",
+      "lat": 13.0827,
+      "lng": 80.2707,
+      "total_accidents": 2575,
+      "avg_risk_score": 43.8,
+      "fatal_accidents": 371,
+      "fatal_rate": 14.4,
+      "major_accidents": 794,
+      "minor_accidents": 1410,
+      "top_cause": "weather"
+    },
+    {
+      "city": "Kolkata",
+      "state": "West Bengal",
+      "lat": 22.5726,
+      "lng": 88.3639,
+      "total_accidents": 2559,
+      "avg_risk_score": 43.5,
+      "fatal_accidents": 377,
+      "fatal_rate": 14.7,
+      "major_accidents": 737,
+      "minor_accidents": 1445,
+      "top_cause": "poor road"
+    },
+    {
+      "city": "Pune",
+      "state": "Maharashtra",
+      "lat": 18.5204,
+      "lng": 73.8567,
+      "total_accidents": 2517,
+      "avg_risk_score": 43.6,
+      "fatal_accidents": 398,
+      "fatal_rate": 15.8,
+      "major_accidents": 729,
+      "minor_accidents": 1390,
+      "top_cause": "distraction"
+    },
+    {
+      "city": "Mumbai",
+      "state": "Maharashtra",
+      "lat": 19.076,
+      "lng": 72.8777,
+      "total_accidents": 2492,
+      "avg_risk_score": 43.4,
+      "fatal_accidents": 359,
+      "fatal_rate": 14.4,
+      "major_accidents": 798,
+      "minor_accidents": 1335,
+      "top_cause": "weather"
+    },
+    {
+      "city": "Bangalore",
+      "state": "Karnataka",
+      "lat": 12.9716,
+      "lng": 77.5946,
+      "total_accidents": 2438,
+      "avg_risk_score": 44.0,
+      "fatal_accidents": 384,
+      "fatal_rate": 15.8,
+      "major_accidents": 707,
+      "minor_accidents": 1347,
+      "top_cause": "overspeeding"
+    },
+    {
+      "city": "Delhi",
+      "state": "Delhi",
+      "lat": 28.6139,
+      "lng": 77.209,
+      "total_accidents": 2433,
+      "avg_risk_score": 43.7,
+      "fatal_accidents": 382,
+      "fatal_rate": 15.7,
+      "major_accidents": 691,
+      "minor_accidents": 1360,
+      "top_cause": "poor road"
+    },
+    {
+      "city": "Hyderabad",
+      "state": "Telangana",
+      "lat": 17.385,
+      "lng": 78.4867,
+      "total_accidents": 2409,
+      "avg_risk_score": 43.9,
+      "fatal_accidents": 338,
+      "fatal_rate": 14.0,
+      "major_accidents": 752,
+      "minor_accidents": 1319,
+      "top_cause": "weather"
+    }
+  ],
+  "hourly": [
+    {
+      "hour": 0,
+      "time_label": "00:00",
+      "accidents": 840,
+      "avg_risk": 35.6,
+      "is_peak": 0
+    },
+    {
+      "hour": 1,
+      "time_label": "01:00",
+      "accidents": 859,
+      "avg_risk": 35.2,
+      "is_peak": 0
+    },
+    {
+      "hour": 2,
+      "time_label": "02:00",
+      "accidents": 888,
+      "avg_risk": 34.1,
+      "is_peak": 0
+    },
+    {
+      "hour": 3,
+      "time_label": "03:00",
+      "accidents": 824,
+      "avg_risk": 34.8,
+      "is_peak": 0
+    },
+    {
+      "hour": 4,
+      "time_label": "04:00",
+      "accidents": 805,
+      "avg_risk": 35.5,
+      "is_peak": 0
+    },
+    {
+      "hour": 5,
+      "time_label": "05:00",
+      "accidents": 827,
+      "avg_risk": 41.3,
+      "is_peak": 0
+    },
+    {
+      "hour": 6,
+      "time_label": "06:00",
+      "accidents": 856,
+      "avg_risk": 39.0,
+      "is_peak": 0
+    },
+    {
+      "hour": 7,
+      "time_label": "07:00",
+      "accidents": 786,
+      "avg_risk": 40.0,
+      "is_peak": 0
+    },
+    {
+      "hour": 8,
+      "time_label": "08:00",
+      "accidents": 849,
+      "avg_risk": 60.8,
+      "is_peak": 1
+    },
+    {
+      "hour": 9,
+      "time_label": "09:00",
+      "accidents": 786,
+      "avg_risk": 59.5,
+      "is_peak": 1
+    },
+    {
+      "hour": 10,
+      "time_label": "10:00",
+      "accidents": 789,
+      "avg_risk": 61.0,
+      "is_peak": 1
+    },
+    {
+      "hour": 11,
+      "time_label": "11:00",
+      "accidents": 841,
+      "avg_risk": 40.8,
+      "is_peak": 0
+    },
+    {
+      "hour": 12,
+      "time_label": "12:00",
+      "accidents": 866,
+      "avg_risk": 39.8,
+      "is_peak": 0
+    },
+    {
+      "hour": 13,
+      "time_label": "13:00",
+      "accidents": 878,
+      "avg_risk": 39.1,
+      "is_peak": 0
+    },
+    {
+      "hour": 14,
+      "time_label": "14:00",
+      "accidents": 838,
+      "avg_risk": 39.4,
+      "is_peak": 0
+    },
+    {
+      "hour": 15,
+      "time_label": "15:00",
+      "accidents": 811,
+      "avg_risk": 39.8,
+      "is_peak": 0
+    },
+    {
+      "hour": 16,
+      "time_label": "16:00",
+      "accidents": 787,
+      "avg_risk": 38.0,
+      "is_peak": 0
+    },
+    {
+      "hour": 17,
+      "time_label": "17:00",
+      "accidents": 861,
+      "avg_risk": 60.5,
+      "is_peak": 1
+    },
+    {
+      "hour": 18,
+      "time_label": "18:00",
+      "accidents": 823,
+      "avg_risk": 61.3,
+      "is_peak": 1
+    },
+    {
+      "hour": 19,
+      "time_label": "19:00",
+      "accidents": 840,
+      "avg_risk": 59.1,
+      "is_peak": 1
+    },
+    {
+      "hour": 20,
+      "time_label": "20:00",
+      "accidents": 838,
+      "avg_risk": 39.1,
+      "is_peak": 0
+    },
+    {
+      "hour": 21,
+      "time_label": "21:00",
+      "accidents": 830,
+      "avg_risk": 39.3,
+      "is_peak": 0
+    },
+    {
+      "hour": 22,
+      "time_label": "22:00",
+      "accidents": 853,
+      "avg_risk": 38.3,
+      "is_peak": 0
+    },
+    {
+      "hour": 23,
+      "time_label": "23:00",
+      "accidents": 825,
+      "avg_risk": 40.3,
+      "is_peak": 0
+    }
+  ],
+  "weather": [
+    {
+      "weather": "Clear",
+      "count": 6690,
+      "avg_risk": 23.7,
+      "fatal_pct": 14.8
+    },
+    {
+      "weather": "Fog",
+      "count": 6633,
+      "avg_risk": 58.9,
+      "fatal_pct": 15.0
+    },
+    {
+      "weather": "Rain",
+      "count": 6677,
+      "avg_risk": 48.8,
+      "fatal_pct": 15.0
+    }
+  ],
+  "visibility": [
+    {
+      "visibility": "High",
+      "count": 6690,
+      "avg_risk": 23.7,
+      "fatal_pct": 14.8
+    },
+    {
+      "visibility": "Low",
+      "count": 9987,
+      "avg_risk": 58.9,
+      "fatal_pct": 14.9
+    },
+    {
+      "visibility": "Medium",
+      "count": 3323,
+      "avg_risk": 38.6,
+      "fatal_pct": 15.3
+    }
+  ],
+  "road_types": [
+    {
+      "road_type": "Highway",
+      "count": 6616,
+      "avg_risk": 43.7,
+      "fatal_pct": 14.9
+    },
+    {
+      "road_type": "Rural",
+      "count": 6639,
+      "avg_risk": 43.5,
+      "fatal_pct": 14.5
+    },
+    {
+      "road_type": "Urban",
+      "count": 6745,
+      "avg_risk": 44.1,
+      "fatal_pct": 15.4
+    }
+  ],
+  "traffic_density": [
+    {
+      "traffic_density": "High",
+      "count": 7034,
+      "avg_risk": 59.5
+    },
+    {
+      "traffic_density": "Low",
+      "count": 7067,
+      "avg_risk": 33.9
+    },
+    {
+      "traffic_density": "Medium",
+      "count": 5899,
+      "avg_risk": 36.8
+    }
+  ],
+  "severity_distribution": [
+    {
+      "name": "Minor",
+      "count": 11025,
+      "percentage": 55.1,
+      "color": "#10B981"
+    },
+    {
+      "name": "Major",
+      "count": 5988,
+      "percentage": 29.9,
+      "color": "#F59E0B"
+    },
+    {
+      "name": "Fatal",
+      "count": 2987,
+      "percentage": 14.9,
+      "color": "#EF4444"
+    }
+  ],
+  "dataset2": {
+    "severity_distribution": [
+      {
+        "name": "Slight Injury",
+        "count": 10415,
+        "percentage": 84.6,
+        "color": "#10B981"
+      },
+      {
+        "name": "Serious Injury",
+        "count": 1743,
+        "percentage": 14.2,
+        "color": "#F59E0B"
+      },
+      {
+        "name": "Fatal Injury",
+        "count": 158,
+        "percentage": 1.3,
+        "color": "#EF4444"
+      }
+    ],
+    "top_causes": [
+      {
+        "cause": "No distancing",
+        "count": 2263,
+        "percentage": 18.4
+      },
+      {
+        "cause": "Changing lane to the right",
+        "count": 1808,
+        "percentage": 14.7
+      },
+      {
+        "cause": "Changing lane to the left",
+        "count": 1473,
+        "percentage": 12.0
+      },
+      {
+        "cause": "Driving carelessly",
+        "count": 1402,
+        "percentage": 11.4
+      },
+      {
+        "cause": "No priority to vehicle",
+        "count": 1207,
+        "percentage": 9.8
+      },
+      {
+        "cause": "Moving Backward",
+        "count": 1137,
+        "percentage": 9.2
+      },
+      {
+        "cause": "No priority to pedestrian",
+        "count": 721,
+        "percentage": 5.9
+      },
+      {
+        "cause": "Other",
+        "count": 456,
+        "percentage": 3.7
+      }
+    ],
+    "road_surface": [
+      {
+        "surface": "Dry",
+        "count": 9340
+      },
+      {
+        "surface": "Wet or damp",
+        "count": 2904
+      },
+      {
+        "surface": "Snow",
+        "count": 70
+      },
+      {
+        "surface": "Flood over 3cm. deep",
+        "count": 2
+      }
+    ],
+    "light_conditions": [
+      {
+        "light": "Daylight",
+        "count": 8798
+      },
+      {
+        "light": "Darkness - lights lit",
+        "count": 3286
+      },
+      {
+        "light": "Darkness - no lighting",
+        "count": 192
+      },
+      {
+        "light": "Darkness - lights unlit",
+        "count": 40
+      }
+    ],
+    "vehicle_types": [
+      {
+        "vehicle": "Automobile",
+        "count": 3205
+      },
+      {
+        "vehicle": "Lorry (41?100Q)",
+        "count": 2186
+      },
+      {
+        "vehicle": "Other",
+        "count": 1208
+      },
+      {
+        "vehicle": "Pick up upto 10Q",
+        "count": 811
+      },
+      {
+        "vehicle": "Public (12 seats)",
+        "count": 711
+      },
+      {
+        "vehicle": "Stationwagen",
+        "count": 687
+      }
+    ]
+  }
+}
