@@ -138,45 +138,46 @@ def predict_risk(req: RiskPredictionRequest):
     # Peak hour logic: 8-10 AM and 5-8 PM (17:00-20:00)
     is_peak_hour = 1 if req.hour in [8, 9, 10, 17, 18, 19, 20] else 0
 
-    # Build input dictionary matching training features
-    input_dict = {
-        col: 0 for col in feature_columns
-    }
+    # Build raw input DataFrame matching sklearn Pipeline preprocessor
+    raw_input_df = pd.DataFrame([{
+        "city": req.city,
+        "road_type": req.road_type.lower(),
+        "weather": req.weather.lower(),
+        "visibility": req.visibility.lower(),
+        "traffic_density": req.traffic_density.lower(),
+        "lanes": req.lanes,
+        "traffic_signal": req.traffic_signal,
+        "temperature": req.temperature,
+        "hour": req.hour,
+        "is_weekend": req.is_weekend,
+        "is_peak_hour": is_peak_hour,
+    }])
 
-    # Set numeric features
+    # Build legacy one-hot DataFrame for backward compatibility
+    input_dict = {col: 0 for col in feature_columns}
     input_dict['lanes'] = req.lanes
     input_dict['traffic_signal'] = req.traffic_signal
     input_dict['temperature'] = req.temperature
     input_dict['hour'] = req.hour
     input_dict['is_weekend'] = req.is_weekend
     input_dict['is_peak_hour'] = is_peak_hour
-
-    # Set one-hot categoricals
-    city_col = f"city_{req.city}"
-    if city_col in input_dict:
-        input_dict[city_col] = 1
-
-    road_type_col = f"road_type_{req.road_type.lower()}"
-    if road_type_col in input_dict:
-        input_dict[road_type_col] = 1
-
-    weather_col = f"weather_{req.weather.lower()}"
-    if weather_col in input_dict:
-        input_dict[weather_col] = 1
-
-    vis_col = f"visibility_{req.visibility.lower()}"
-    if vis_col in input_dict:
-        input_dict[vis_col] = 1
-
-    td_col = f"traffic_density_{req.traffic_density.lower()}"
-    if td_col in input_dict:
-        input_dict[td_col] = 1
-
-    # Convert to DataFrame in exact feature order
-    input_df = pd.DataFrame([input_dict])[feature_columns]
+    for prefix, val in [
+        ("city", req.city),
+        ("road_type", req.road_type.lower()),
+        ("weather", req.weather.lower()),
+        ("visibility", req.visibility.lower()),
+        ("traffic_density", req.traffic_density.lower()),
+    ]:
+        col = f"{prefix}_{val}"
+        if col in input_dict:
+            input_dict[col] = 1
+    input_df = pd.DataFrame([input_dict])[feature_columns] if feature_columns else raw_input_df
 
     # Model 1 Inference: Risk Score Regressor
-    raw_score = float(rf_regressor.predict(input_df)[0])
+    if hasattr(rf_regressor, "named_steps"):
+        raw_score = float(rf_regressor.predict(raw_input_df)[0])
+    else:
+        raw_score = float(rf_regressor.predict(input_df)[0])
 
     # Dataset 2 enrichment adjustments (surface conditions & dark unlit lighting)
     surface_adj = 0.0
@@ -196,8 +197,13 @@ def predict_risk(req: RiskPredictionRequest):
     risk_percentage = int(round(adjusted_score * 100))
 
     # Model 2 Inference: Severity Classifier
-    severity_probs = rf_classifier.predict_proba(input_df)[0]
-    classes = list(rf_classifier.classes_)
+    if hasattr(rf_classifier, "named_steps"):
+        severity_probs = rf_classifier.predict_proba(raw_input_df)[0]
+        clf_estimator = rf_classifier.named_steps.get("classifier", rf_classifier)
+        classes = list(getattr(clf_estimator, "classes_", getattr(rf_classifier, "classes_", ["minor", "major", "fatal"])))
+    else:
+        severity_probs = rf_classifier.predict_proba(input_df)[0]
+        classes = list(rf_classifier.classes_)
     prob_dict = {cls: round(float(prob) * 100, 1) for cls, prob in zip(classes, severity_probs)}
 
     # Categorize Risk
@@ -219,9 +225,19 @@ def predict_risk(req: RiskPredictionRequest):
         sev_pred = "Minor"
 
     # Confidence calculation based on ensemble agreement
-    tree_preds = [tree.predict(input_df.values)[0] for tree in rf_regressor.estimators_]
-    std_dev = float(np.std(tree_preds))
-    model_confidence = round(max(70.0, min(97.5, (1.0 - std_dev * 1.5) * 100)), 1)
+    try:
+        if hasattr(rf_regressor, "named_steps") and "regressor" in rf_regressor.named_steps:
+            preprocessor = rf_regressor.named_steps["preprocessor"]
+            preprocessed_vals = preprocessor.transform(raw_input_df)
+            tree_preds = [tree.predict(preprocessed_vals)[0] for tree in rf_regressor.named_steps["regressor"].estimators_]
+        elif hasattr(rf_regressor, "estimators_"):
+            tree_preds = [tree.predict(input_df.values)[0] for tree in rf_regressor.estimators_]
+        else:
+            tree_preds = [raw_score]
+        std_dev = float(np.std(tree_preds))
+        model_confidence = round(max(70.0, min(97.5, (1.0 - std_dev * 1.5) * 100)), 1)
+    except Exception:
+        model_confidence = 85.0
 
     # Dynamic Explainable Contributing Factors
     factors: List[ContributingFactor] = []

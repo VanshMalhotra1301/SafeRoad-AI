@@ -1,6 +1,6 @@
 {
   "dataset_1": {
-    "name": "Indian Road Accident Dataset (2022\u20132025)",
+    "name": "Indian Road Accident Dataset (2022-2025)",
     "source": "Kaggle (sehaj1104/indian-road-accident-dataset-20222025)",
     "total_records": 20000,
     "total_features": 24,
@@ -15,34 +15,37 @@
       "Pune"
     ],
     "regressor_metrics": {
-      "model_type": "Random Forest Regressor (100 Trees)",
-      "r2_score": 0.8805,
-      "mae": 0.0557,
-      "rmse": 0.0758,
-      "variance_explained_pct": 88.05
+      "model_type": "Random Forest Regressor (200 Trees, Pipeline)",
+      "r2_score": 0.8811,
+      "mae": 0.0556,
+      "rmse": 0.0756,
+      "variance_explained_pct": 88.11
     },
     "classifier_metrics": {
-      "model_type": "Random Forest Classifier (Balanced)",
-      "accuracy": 0.4755,
+      "model_type": "RandomForest Classifier (Tuned, Balanced)",
+      "accuracy": 0.3797,
+      "balanced_accuracy": 0.319,
+      "macro_f1": 0.3183,
+      "weighted_f1": 0.3926,
       "classes": [
         "minor",
         "major",
         "fatal"
       ],
       "precision": {
-        "minor": 0.5459,
-        "major": 0.2902,
-        "fatal": 0.1111
+        "minor": 0.5525,
+        "major": 0.2906,
+        "fatal": 0.1247
       },
       "recall": {
-        "minor": 0.7519,
-        "major": 0.1853,
-        "fatal": 0.0369
+        "minor": 0.4748,
+        "major": 0.3063,
+        "fatal": 0.1759
       },
       "f1_score": {
-        "minor": 0.6326,
-        "major": 0.2262,
-        "fatal": 0.0553
+        "minor": 0.5107,
+        "major": 0.2983,
+        "fatal": 0.1459
       },
       "confusion_matrix": {
         "labels": [
@@ -52,55 +55,195 @@
         ],
         "matrix": [
           [
-            1658,
-            424,
-            123
+            1047,
+            693,
+            465
           ],
           [
-            923,
-            222,
-            53
+            559,
+            367,
+            272
           ],
           [
-            456,
-            119,
-            22
+            289,
+            203,
+            105
           ]
         ]
+      },
+      "fatal_recall": 0.1759,
+      "best_hyperparameters": {
+        "classifier__n_estimators": "200",
+        "classifier__min_samples_split": "2",
+        "classifier__min_samples_leaf": "2",
+        "classifier__max_features": "log2",
+        "classifier__max_depth": "8",
+        "classifier__class_weight": "balanced"
+      },
+      "cross_validation": {
+        "method": "5-fold Stratified",
+        "scoring": "macro-F1",
+        "cv_macro_f1": 0.3334
+      },
+      "baseline_comparison": {
+        "Accuracy": {
+          "before": 0.4745,
+          "after": 0.3797,
+          "change": -0.0948
+        },
+        "Balanced Accuracy": {
+          "before": 0.3228,
+          "after": 0.319,
+          "change": -0.0038
+        },
+        "Macro-F1": {
+          "before": 0.302,
+          "after": 0.3183,
+          "change": 0.0163
+        },
+        "Weighted-F1": {
+          "before": 0.4235,
+          "after": 0.3926,
+          "change": -0.0309
+        },
+        "Fatal Precision": {
+          "before": 0.09,
+          "after": 0.1247,
+          "change": 0.0347
+        },
+        "Fatal Recall": {
+          "before": 0.0302,
+          "after": 0.1759,
+          "change": 0.1457
+        },
+        "Fatal F1": {
+          "before": 0.0452,
+          "after": 0.1459,
+          "change": 0.1007
+        },
+        "Major Recall": {
+          "before": 0.1878,
+          "after": 0.3063,
+          "change": 0.1185
+        },
+        "Major F1": {
+          "before": 0.2296,
+          "after": 0.2983,
+          "change": 0.0687
+        }
+      },
+      "models_compared": {
+        "RandomForest": {
+          "test_macro_f1": 0.3183,
+          "test_balanced_accuracy": 0.319,
+          "fatal_recall": 0.1759
+        },
+        "ExtraTrees": {
+          "test_macro_f1": 0.3159,
+          "test_balanced_accuracy": 0.3157,
+          "fatal_recall": 0.1139
+        },
+        "GradientBoosting": {
+          "test_macro_f1": 0.3206,
+          "test_balanced_accuracy": 0.3216,
+          "fatal_recall": 0.1022
+        }
       }
     },
     "feature_importances": [
       {
-        "feature": "visibility_low",
-        "importance": 49.6
-      },
-      {
-        "feature": "traffic_density_high",
-        "importance": 28.63
-      },
-      {
-        "feature": "is_peak_hour",
-        "importance": 8.14
-      },
-      {
-        "feature": "weather_rain",
-        "importance": 2.75
-      },
-      {
-        "feature": "visibility_medium",
-        "importance": 2.61
-      },
-      {
         "feature": "temperature",
-        "importance": 2.02
+        "importance": 18.1
       },
       {
         "feature": "hour",
-        "importance": 1.55
+        "importance": 16.41
       },
       {
         "feature": "lanes",
-        "importance": 1.06
+        "importance": 11.29
+      },
+      {
+        "feature": "is_weekend",
+        "importance": 4.34
+      },
+      {
+        "feature": "traffic_signal",
+        "importance": 4.29
+      },
+      {
+        "feature": "traffic_density_medium",
+        "importance": 3.19
+      },
+      {
+        "feature": "traffic_density_high",
+        "importance": 3.03
+      },
+      {
+        "feature": "traffic_density_low",
+        "importance": 3.03
+      },
+      {
+        "feature": "is_peak_hour",
+        "importance": 2.98
+      },
+      {
+        "feature": "road_type_rural",
+        "importance": 2.98
+      },
+      {
+        "feature": "road_type_highway",
+        "importance": 2.97
+      },
+      {
+        "feature": "road_type_urban",
+        "importance": 2.87
+      },
+      {
+        "feature": "weather_fog",
+        "importance": 2.21
+      },
+      {
+        "feature": "weather_rain",
+        "importance": 2.21
+      },
+      {
+        "feature": "visibility_low",
+        "importance": 2.19
+      }
+    ],
+    "regressor_feature_importances": [
+      {
+        "feature": "visibility_low",
+        "importance": 49.63
+      },
+      {
+        "feature": "traffic_density_high",
+        "importance": 28.64
+      },
+      {
+        "feature": "is_peak_hour",
+        "importance": 8.15
+      },
+      {
+        "feature": "visibility_medium",
+        "importance": 2.7
+      },
+      {
+        "feature": "weather_rain",
+        "importance": 2.65
+      },
+      {
+        "feature": "temperature",
+        "importance": 2.01
+      },
+      {
+        "feature": "hour",
+        "importance": 1.57
+      },
+      {
+        "feature": "lanes",
+        "importance": 1.07
       },
       {
         "feature": "traffic_signal",
@@ -108,7 +251,7 @@
       },
       {
         "feature": "is_weekend",
-        "importance": 0.33
+        "importance": 0.34
       },
       {
         "feature": "road_type_rural",
@@ -127,8 +270,8 @@
         "importance": 0.22
       },
       {
-        "feature": "city_Chennai",
-        "importance": 0.22
+        "feature": "city_Chandigarh",
+        "importance": 0.21
       }
     ]
   },
@@ -137,7 +280,9 @@
     "source": "Kaggle (s3programmer/road-accident-severity-in-india)",
     "total_records": 12316,
     "total_features": 32,
-    "accuracy": 0.7801,
+    "accuracy": 0.7512,
+    "balanced_accuracy": 0.5305,
+    "macro_f1": 0.4826,
     "classes": [
       "Fatal injury",
       "Serious Injury",
@@ -156,31 +301,31 @@
           10
         ],
         [
-          4,
-          100,
-          195
+          3,
+          103,
+          193
         ],
         [
-          32,
-          218,
-          1535
+          34,
+          280,
+          1471
         ]
       ]
     },
     "precision": {
-      "Fatal injury": 0.234,
-      "Serious Injury": 0.3096,
-      "Slight Injury": 0.8822
+      "Fatal injury": 0.2292,
+      "Serious Injury": 0.2655,
+      "Slight Injury": 0.8787
     },
     "recall": {
       "Fatal injury": 0.4231,
-      "Serious Injury": 0.3344,
-      "Slight Injury": 0.8599
+      "Serious Injury": 0.3445,
+      "Slight Injury": 0.8241
     },
     "f1_score": {
-      "Fatal injury": 0.3014,
-      "Serious Injury": 0.3215,
-      "Slight Injury": 0.8709
+      "Fatal injury": 0.2973,
+      "Serious Injury": 0.2999,
+      "Slight Injury": 0.8505
     }
   }
 }
